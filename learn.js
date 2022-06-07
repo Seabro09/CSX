@@ -1,32 +1,3 @@
-const num = 3;
-function multiplyBy2 (inputNumber) { // inputNumber is the parameter
-    const result = inputNumber*2;
-    return result;
-}
-
-const output = multiplyBy2(4); // 4 is the Argument
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function disemvowel(string) {
-  let finalString = "";
-  for (let i = 0; i < string.length; i++) {
-    if ((string.charAt(i) !==  "o") && (string.charAt(i) !== "e") && (string.charAt(i) !== "a") && (string.charAt(i) !== "i") && (string.charAt(i) !== "u")) {
-          finalString += string.charAt(i);
-    } 
-  }
-  return finalString;
-}
-
-// Uncomment these to check your work!
-console.log(disemvowel('CodeSmith')); // => 'CdSmth'
-console.log(disemvowel('BANANA')); // => 'BNN'
-console.log(disemvowel('hello world')); // => 'hll wrld'
-
-
-/////////////////////////////////////////////////////////////////
-
 // Here we are iterating over an array (synonyms[]) and pushing those values to a second array (greetings[]).
 // Then we iterate over that array and console.log it out
 
@@ -458,9 +429,7 @@ console.log(intersection([arr1, arr2, arr3])); // should log: [5, 15]
 
 //Construct a function union that takes an input array of arrays, compares each array, and returns a new flat array that contains all elements. If there are duplicate elements, only add it once to the new array. Preserve the order of the elements starting from the first element of the first input array.
 
-// My Code
-
-// ADD CODE HERE
+// My Initial Code
 
 function union (arrays) {
   const newArr = [];
@@ -478,11 +447,27 @@ function union (arrays) {
   return acc;
 }
 
+// CSX Code
 
+function union1 (arrays) {
+    return arrays.reduce((finalArray, currentArray) => { // iterate through every array passed in. 
+        // parameters are final array to be returned, current array being iterated through
+        currentArray.forEach(el => {
+          // for each element in current array
+            if (!finalArray.includes(el)) { 
+              // is the element in current array?
+                finalArray.push(el); // If not push it into final array
+            } // continue this for all elements in all three arrays
+        })
+        return finalArray;
+    }, [])
+}
+
+/////////////////////////////////////////////////////////////////////////
 // Uncomment these to check your work!
 const arr1 = [5, 10, 15];
 const arr2 = [15, 88, 1, 5, 7];
 const arr3 = [100, 15, 10, 1, 5];
 console.log(union([arr1, arr2, arr3])); // should log: [5, 10, 15, 88, 1, 7, 100]
-
-/////////////////////////////////////////////////////////////////////////
+console.log(union1([arr1, arr2, arr3])); // should log: [5, 10, 15, 88, 1, 7, 100]
+    
