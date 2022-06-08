@@ -42,3 +42,21 @@ let b = 2;
 
 //////////////////////////////////////
 
+// Named Functions
+
+// Traditional Function
+function bob (a){
+  return a + 100;
+}
+
+// Arrow Function
+let bob = a => a + 100;
+
+//////////////////////
+
+//Arrow function using forEach to iterate through an array.
+// someValues is the array
+
+someValues.forEach((element) => {
+    console.log(element);
+});
