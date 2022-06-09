@@ -53,3 +53,40 @@ function multiMap (valArr, callbackArr) { // two parameters, the items, and the 
 	const functions = [uppercaser, capitalize, repeater];
 	//console.log(multiMap1(items, functions));
 	console.log(multiMap(items, functions));
+
+///////////////////////////////////////////////////////////////
+
+// My Code
+
+function prioritize1 (array, callback) {
+  const finArr = [];
+  const tempArr = [];
+ 	for (let element of array) {
+    if (callback(element)){
+      finArr.unshift(element); // unshift doesn't work here. because it puts seinfeld first
+    } else {
+      tempArr.push(element);
+    }
+  }
+  return finArr.concat(tempArr);
+}
+
+// CSX Code
+
+function prioritize (array, callback) {
+  const finArr = [];
+  const tempArr = [];
+ 	for (let i = 0; i < array.length; i++) {
+    if (callback(array[i])){
+      finArr.push(array[i]);
+    } else {
+      tempArr.push(array[i]);
+    }
+  }
+  return finArr.concat(tempArr);
+}
+// Uncomment these to check your work!
+function startsWithS(str) { return str[0].toLowerCase() === 's'; }
+const tvShows = ['curb', 'rickandmorty', 'seinfeld', 'sunny', 'friends']
+console.log(prioritize(tvShows, startsWithS)); // should log: ['seinfeld', 'sunny', 'curb', 'rickandmorty', 'friends']
+console.log(prioritize1(tvShows, startsWithS));
