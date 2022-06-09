@@ -35,3 +35,21 @@ console.log(objOfMatches1(arr1, arr2, uppercaser)); // should log: { hi: 'HI', b
 
 ///////////////////////////////////////////////////////////////////////////
 
+// multiMap()  - This function helps us to learn more about arrow functions and more specifically the for (let element of array) and the map() function which takes in an array and populates an object or another array with the results of calling a provided function on every element in the array.
+
+function multiMap (valArr, callbackArr) { // two parameters, the items, and the functions
+  let obj = {}; // new object
+  for (let element of valArr) { // for every element in the array, do ... 
+    obj[element] = callbackArr.map(eachFunc => eachFunc(element)) // take the object that we created. Put each element of valArr as the key, then for the propertie, use the map function on the callbackArr parameter which will run the respective function on each element
+  }
+  return obj; // return the obj
+}
+
+// Uncomment these to check your work!
+ function uppercaser(str) { return str.toUpperCase(); }
+ function capitalize(str) { return str[0].toUpperCase() + str.slice(1).toLowerCase(); }
+ function repeater(str) { return str + str; }
+	const items = ['catfood', 'glue', 'beer'];
+	const functions = [uppercaser, capitalize, repeater];
+	//console.log(multiMap1(items, functions));
+	console.log(multiMap(items, functions));
