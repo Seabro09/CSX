@@ -40,7 +40,7 @@ console.log(objOfMatches1(arr1, arr2, uppercaser)); // should log: { hi: 'HI', b
 function multiMap (valArr, callbackArr) { // two parameters, the items, and the functions
   let obj = {}; // new object
   for (let element of valArr) { // for every element in the array, do ... 
-    obj[element] = callbackArr.map(eachFunc => eachFunc(element)) // take the object that we created. Put each element of valArr as the key, then for the propertie, use the map function on the callbackArr parameter which will run the respective function on each element
+    obj[element] = callbackArr.map(eachFunc => eachFunc(element)) // take the object that we created. Put each element of valArr as the key, then for the properties, use the map function on the callbackArr parameter which will run the respective function on each element
   }
   return obj; // return the obj
 }
@@ -90,3 +90,45 @@ function startsWithS(str) { return str[0].toLowerCase() === 's'; }
 const tvShows = ['curb', 'rickandmorty', 'seinfeld', 'sunny', 'friends']
 console.log(prioritize(tvShows, startsWithS)); // should log: ['seinfeld', 'sunny', 'curb', 'rickandmorty', 'friends']
 console.log(prioritize1(tvShows, startsWithS));
+
+/////////////////////////////////////////////////////////
+
+// My Code
+
+	function countBy1 (array, callback) {
+    let obj = {
+      odd: 0,
+    	even: 0
+    };
+    for (let element of array) {
+      if (callback(element) === 'odd') {
+          obj.odd = obj.odd + 1
+          } else {
+          obj.even = obj.even + 1
+          }
+    }
+    return obj;
+  }
+
+// CSX Code 
+
+function countBy(array, callback) {
+  const result = {}; // we call a new object called result
+  for (let element of array) { // for each element in array .. do .. .
+    if (callback(element) in result) { // whichever it is (odd or even) increment it by 1.
+      result[callback(element)] ++
+    } else {
+      result[callback(element)] = 1 // else, it's equal to 1
+    }
+  }
+  return result;
+}
+
+// Uncomment these to check your work!
+function evenOdd(n) {
+  if (n % 2 === 0) return 'even';
+  else return 'odd';
+}
+const nums = [1, 2, 3, 4, 5];
+console.log(countBy(nums, evenOdd)); // should log: { odd: 3, even: 2 }
+console.log(countBy1(nums, evenOdd));
