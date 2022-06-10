@@ -132,3 +132,62 @@ function evenOdd(n) {
 const nums = [1, 2, 3, 4, 5];
 console.log(countBy(nums, evenOdd)); // should log: { odd: 3, even: 2 }
 console.log(countBy1(nums, evenOdd));
+
+///////////////////////////////////////////////
+
+// Working with Objects
+// iterating through arrays and adding values to keys in objects based on certain conditions
+
+ // My Code
+
+function groupBy1(array, callback) {
+  let obj = {};
+
+  for (let i = 0; i < array.length; i++) {
+    let finish = callback(array[i]);
+    if (obj.hasOwnProperty(finish)) {
+          obj[finish].push(array[i])
+    } else {
+      obj[finish] = [array[i]]
+    }
+  }
+  return obj; 
+}
+
+// CSX Code 1
+
+function groupBy2 (array, callback) {
+  const result = {};
+  for (let element of array) {
+    if (callback(element) in result) {
+      result[callback(element)].push(element)
+    } else {
+      result[callback(element)] = [element]
+    }
+  }
+  return result;
+}
+
+// CSX Code 2
+
+function groupBy(array, callback) {
+  let obj = {};
+
+  for (let i = 0; i < array.length; i++) {
+    let currArr = array[i]
+    let finish = callback(currArr);
+    if (!obj.hasOwnProperty(finish)) {
+             obj[finish] = [currArr]
+    } else {
+        obj[finish].push(currArr)
+    }
+  }
+  return obj; 
+}
+
+// Uncomment these to check your work!
+ const decimals = [1.3, 2.1, 2.4];
+ const floored = function(num) { return Math.floor(num); };
+ console.log(groupBy1(decimals, floored)); // should log: { 1: [1.3], 2: [2.1, 2.4] }
+console.log(groupBy2(decimals, floored));
+console.log(groupBy(decimals, floored));
