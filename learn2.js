@@ -191,3 +191,24 @@ function groupBy(array, callback) {
  console.log(groupBy1(decimals, floored)); // should log: { 1: [1.3], 2: [2.1, 2.4] }
 console.log(groupBy2(decimals, floored));
 console.log(groupBy(decimals, floored));
+
+//////////////////////////////////////////////////////////////////////
+
+// Iterating through keys and values to then push the key to a new array based on certain conditions
+
+// My Code
+function goodKeys (object, callback) {	
+  	let newArr = []; // created new array
+  	for (const [key, value] of Object.entries(object)) { // for each key and value of object
+      	if (callback(value)) { // if running the callback on the value returns true,
+          newArr.push(key); // push the key into a the new array newArr.
+        }
+    }
+  return newArr; // return newAr
+}
+// Uncomment these to check your work!
+const sunny = { mac: 'priest', dennis: 'calculator', charlie: 'birdlaw', dee: 'bird', frank: 'warthog' };
+function startsWithBird(str) { return str.slice(0, 4).toLowerCase() === 'bird'; };
+console.log(goodKeys(sunny, startsWithBird)); // should log: ['charlie', 'dee']
+
+//////////////////////////////////////////////////////////////////////////////
