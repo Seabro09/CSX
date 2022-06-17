@@ -121,7 +121,7 @@ const addByTwoOnce = once(function(num) { //declare a constant in local memory, 
   return num + 2;
 });
 
-//it is importatnt to notice that the second time that we run addByTwoOnce.. we doing nothing with the once function. We are simply looking back into the local memory of addByTwoOnce, pulling out it's backpack and function definition, and noticing that hasBeenCalled is now true so we bypass running the call back again and simply log out the previous cachedResult.
+//it is importatnt to notice that the second time that we run addByTwoOnce.. we doing nothing with the once function. We are simply looking back into the local memory of addByTwoOnce, pulling out it's backpack and function definition, and noticing that hasBeenCalled is now true so we bypass running the call back again and simply log out the previous cachedResult,  which is 7.
 // UNCOMMENT THESE TO TEST YOUR WORK!
 console.log(addByTwoOnce(5));  //should log 7 // log out the function addByTwoOnce and pass in 5 as it's input. 
 console.log(addByTwoOnce(10));  //should log 7 // Callback is ran again so should log same thing.
