@@ -153,3 +153,55 @@ console.log(addByTwoOnce(9001));
 
 
 /////////////////////////////////////////////////
+
+
+// Another Example
+// ADD CODE HERE
+
+// My Code
+
+function after1(num, callback) {
+  let result;
+  let counter = 1;
+  function call(string){
+    if (counter !== num) {
+      counter++
+    } else {
+      result = callback(string);
+    } 
+    return result;
+  } 
+  return call;
+}
+
+const called = function(string) { return('hello ' + string); };
+const afterCalled = after(3, called);
+const afterCalled1 = after(3, called);
+
+
+///// The function of call() has it's own local memory and that is returned to afterCalled. It remembers that coutner is incrememnted and once it gets to 3, it runs the call back on the string "world" that was passed into afterCalled() and subsequently, call()
+
+
+//CSX Code
+
+function after(numOfCalls, callback) {
+  let count = 0;
+  return function(...args) { // we don't even have to name a function with a label. We can just return a general function with the result being the callback function on the given parameter to afterCalled if the conditions are met
+    count += 1; // increment by 1
+    if (count >= numOfCalls) {
+      return callback(...args);
+    } // if these conditions are not met, it returns an undefined function
+  }
+}
+
+// UNCOMMENT THESE LINES TO TEST YOUR WORK
+console.log(afterCalled1('world')); // -> undefined is printed
+console.log(afterCalled1('world')); // -> undefined is printed
+console.log(afterCalled1('world')); // -> 'hello world' is printed
+
+console.log(afterCalled('world')); // -> undefined is printed
+console.log(afterCalled('world')); // -> undefined is printed
+console.log(afterCalled('world')); // -> 'hello world' is printed
+
+
+
