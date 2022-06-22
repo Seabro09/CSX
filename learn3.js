@@ -203,5 +203,56 @@ console.log(afterCalled('world')); // -> undefined is printed
 console.log(afterCalled('world')); // -> undefined is printed
 console.log(afterCalled('world')); // -> 'hello world' is printed
 
+/////////////////////////////////////////////////////////////////////
+
+// Here is another function expanding on the concept of closure. 
+
+// Challenge : Create a function cycleIterator that accepts an array, and returns a function. The returned function will accept zero arguments. When first invoked, the returned function will return the first element of the array. When invoked a second time, the returned function will return the second element of the array, and so forth. After returning the last element of the array, the next invocation will return the first element of the array again, and continue on with the second after that, and so forth.
+
+// My Code 
+
+function cycleIterator(array) {// declare a function in global memory and pass in array
+  let day = ""; // variable to hold the day
+  let i = 0; // variable to hold the index position number
+  return function() { // return a function back to getDay() with a backpack
+    if (i === array.length) { // if i is equal to the length of the array, start over
+      i = 0; // start over, so index or i is now 0;
+    }
+    day = array[i] // otherwise, set day equal to array index.
+    i++; // increment i
+    return day; // return day to the function, then return the function back to getDay() with its backpack that will have what the index postion is, and other functionality, or function definition.
+  }
+}
+
+const threeDayWeekend = ['Fri', 'Sat', 'Sun']; // declare a const in global memory and set it equal to an array.
+const getDay = cycleIterator(threeDayWeekend); // declare a constant in golobal memory and set it equal to the invoked calling of cycleIterator passing in threeDayWeekend as the argument/parameter and return a function.
+console.log(getDay()); // should log: 'Fri'
+console.log(getDay()); // should log: 'Sat'
+console.log(getDay()); // should log: 'Sun'
+console.log(getDay()); // should log: 'Fri'
+console.log(getDay()); // should log: 'Sat'
+
+/////////////
 
 
+
+// CSX Code
+
+function cycleIterator1(array) {
+  let index = 0;
+  return function() { // no need to name a function or have to return anything at bottom.
+    const result = array[index++]; // we can simply increment array each time the function is called and pass it into result;
+      if (index >= array.length) index = 0;
+    return result;
+  }
+}
+
+const threeDayWeekend1 = ['Fri', 'Sat', 'Sun']; 
+const getDay1 = cycleIterator1(threeDayWeekend1); 
+console.log(getDay1()); // should log: 'Fri'
+console.log(getDay1()); // should log: 'Sat'
+console.log(getDay1()); // should log: 'Sun'
+console.log(getDay1()); // should log: 'Fri'
+console.log(getDay1()); // should log: 'Sat'
+
+////////////////////////////////////////////////////////////////////////////////////////////
