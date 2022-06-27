@@ -280,3 +280,45 @@ const subFrom20 = defineFirstArg(subtract, 20);
 console.log(subFrom20(5)); // should log: 15
 
 ///////////////////////////////////////////////////////////////////////////////////
+
+//Create a function dateStamp that accepts a function and returns a function. The returned function will accept whatever arguments the passed-in function accepts and return an object with a date key whose value is today's date (not including the time) represented as a human-readable string (see the Date object for conversion methods), and an output key that contains the result from invoking the passed-in function.
+
+// My Code
+
+function dateStamp1(callback) { // dateStamp takes in a callback function as an parameter
+  let obj = {};
+  const newDate = new Date(); // new date passed into object newDate
+  const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+  return function(n) {  // return a new function to stampedMultBy2 that has a single parmeter. 
+  	obj[`date`] = (newDate.toLocaleDateString(undefined, options));; // localeDateString Function -  pass in the options we set above.
+    obj[`output`] = callback(n); // run the callback on that parameter that we pass into stampedMultBy2 below
+  	return obj;
+  }
+}
+
+// CSX Code
+// declare a function, dateStamp, that has 1 parameter
+function dateStamp(func) {
+  // return a function that accepts any arguments that the passed-in function accepts
+  return function(...args) { // they wanted the rest parameter here.
+    //create an object
+    const result = {};
+    //create a property with the key "date" and the value of today's date (nt including the time)
+    result["date"] = new Date().toDateString();
+      //create a property with the key "date" and the value of today's date (nt including the time)
+    result["output"] = func(...args) // they wanted the spread operator here.
+    //return the object
+    return result;
+  }
+}
+
+
+const stampedMultBy2 = dateStamp(n => n * 2);
+console.log(stampedMultBy2(4));
+console.log(stampedMultBy2(6));
+
+
+// Uncomment these to check your work!
+const stamped1MultBy2 = dateStamp1(n => n * 2); // the argument within dateStamp is what we will pass into as the callback
+console.log(stamped1MultBy2(4)); // should log: { date: (today's date), output: 8 }
+console.log(stamped1MultBy2(6)); // should log: { date: (today's date), output: 12 }
