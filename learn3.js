@@ -322,3 +322,78 @@ console.log(stampedMultBy2(6));
 const stamped1MultBy2 = dateStamp1(n => n * 2); // the argument within dateStamp is what we will pass into as the callback
 console.log(stamped1MultBy2(4)); // should log: { date: (today's date), output: 8 }
 console.log(stamped1MultBy2(6)); // should log: { date: (today's date), output: 12 }
+
+
+//***Important*** Here is a good site explaining REST and SPREAD https://www.freecodecamp.org/news/javascript-rest-vs-spread-operators/
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+//Create a function censor that accepts no arguments. censor will return a function that will accept either two strings, or one string. When two strings are given, the returned function will hold onto the two strings as a pair, for future use. When one string is given, the returned function will return the same string, except all instances of a first string (of a saved pair) will be replaced with the second string (of a saved pair).
+
+ // My Code
+
+// // create a function with the label censor that takes no arguments
+// function censor() {
+//   let result = ""; // empty string variable result
+//   let hold = []; // empty string variable hold
+//   let tempString = "";
+//   return function(string1, string2) { 
+//   	if ((string1 !== undefined) && (string2 !== undefined)) { // if strings are not undefined
+//       console.log("The If statement is working"); // testing
+//       hold.push(string1, string2); // pushed into an array to hold until needed
+//       return hold;
+//     } else if ((string2 === undefined)) { // if empty second string
+//       console.log("The else if statement is working"); // testing
+//       for (let i = 0; i < hold.length; i++) {
+//         if (string1.includes(hold[i])) { // if value in string1
+//         	string1 = string1.replace(hold[i], hold[i + 1]); // testing
+//           hold.pop(hold[i], hold[i + 1]);
+//         }
+//       }
+//     }
+//     return string1;
+//   }
+// }
+
+
+///////////////////////////////////////////////////
+// Things that I did wrong
+//   1. Needed the cache to be an object. I was trying to work with strings and arrays
+// 2. the first if statement can be just if (string1) We don't need to check for undefined or any of that.
+// 3. needed to use the Objects.keys method to manipulate the cache. Need to study this. 
+// 4. Code needs to be completely simplified
+///////////////////////////////////////////////////
+
+// CSX Code 
+
+//declare a function censor that takes no arguments
+function censor () {
+  // create a varable cache to store key value pairs. This will be an object.
+  let cache = {};
+  //return a function that takes up to two arguments
+  return function(stringOne, stringTwo) {
+  //check to see how many strings are passed in to the returned function
+    if (stringTwo) {
+      //if two strings are passed in, add to cache object as a key value pair
+      cache[stringOne] = stringTwo;
+      return; // we can simply return and "close the execution context"
+    } 
+      // if one string is passed, modify the string to replace any instance of the keys in the cache with the corresponding values in the cache
+    Object.keys(cache).forEach(key => { stringOne = stringOne.replace(key, cache[key])
+    }) //Object.keys method, we pass in the cache as the object we are working on.  This returns an array of ervery key in the object.  Then, for each key (key could be any name) we reassign the value of stringOne to stringOne but with every instance of the key, we replace it with the value of that key. can do this with object[key]. So basically bracket notation.
+      
+//  I need to realize that I can access and manipulate keys and values within objects. Object.keys method is a great way to do this. 
+    
+// return the modified string
+  return stringOne;
+  }
+}
+
+
+
+// Uncomment these to check your work!
+const changeScene = censor();
+changeScene('dogs', 'cats');
+changeScene('quick', 'slow');
+console.log(changeScene('The quick, brown fox jumps over the lazy dogs.')); // should log: 'The slow, brown fox jumps over the lazy cats.'
+
