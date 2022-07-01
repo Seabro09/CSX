@@ -32,3 +32,20 @@ function repeater(char) {
 }
 console.log(repeater('g'));
 console.log(repeater('j'));
+
+/////////////////////////////////////////
+
+
+// My Code 
+
+function factorial(num, counter = num) {
+	if (counter === 1) return num; // base case should be 1. If 0, you will multiply by 0 and get 0
+  return factorial(num *= counter - 1, counter - 1) // recursive case decrementing counter and passing in newNum as a new parameter.
+}
+
+// able to use two lines of code for this whole factorial call. We can pass in the functionality as a parameter( in a sense).
+
+console.log(factorial(4)); // -> 24
+console.log(factorial(6)); // -> 720
+console.log(factorial(5)); // -> 120
+console.log(factorial(7)); // -> 5040

@@ -1,0 +1,9 @@
+let size = 0;
+let hash = 4;
+while (size < 8) {
+ while (hash.length < 4) {
+  console.log(" ");
+  console.log(hash += "#");
+ }
+  size++;
+}
