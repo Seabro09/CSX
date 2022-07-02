@@ -32,3 +32,24 @@ function repeater(char) {
 }
 console.log(repeater('g'));
 console.log(repeater('j'));
+
+///////////////////////////////////////////////////////////
+
+// My Code
+
+//Get the length of an array using recursion without accessing its length property.
+
+function getLength(array, total = 0) { // pass in the array and another variable total as storage
+	if (array.at(-1) === undefined) { // basecase using at() method
+    return total;
+  }
+  array.pop(); // pop off the last element of the array
+  total++ // at the same time, increment total
+  return getLength(array, total) // recursive case
+}
+
+// To check if you've completed the challenge, uncomment these console.logs!
+console.log(getLength([1])); // -> 1
+console.log(getLength([1, 2])); // -> 2
+console.log(getLength([1, 2, 3, 4, 5])); // -> 5
+console.log(getLength([])); // -> 0
