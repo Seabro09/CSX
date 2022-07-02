@@ -40,9 +40,7 @@ console.log(repeater('j'));
 //Get the length of an array using recursion without accessing its length property.
 
 function getLength(array, total = 0) { // pass in the array and another variable total as storage
-	if (array.at(-1) === undefined) { // basecase using at() method
-    return total;
-  }
+	if (array.at(-1) === undefined) return total; // basecase using at() method
   array.pop(); // pop off the last element of the array
   total++ // at the same time, increment total
   return getLength(array, total) // recursive case
