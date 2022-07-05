@@ -49,3 +49,46 @@ console.log(factorial(4)); // -> 24
 console.log(factorial(6)); // -> 720
 console.log(factorial(5)); // -> 120
 console.log(factorial(7)); // -> 5040
+
+/////////////////////////////////////////////////////
+
+// 
+
+function getLength(array, total = 0) { // pass in the array and another variable total as storage
+	if (array.at(-1) === undefined) return total; // basecase using at() method
+  array.pop(); // pop off the last element of the array
+  total++ // at the same time, increment total
+  return getLength(array, total) // recursive case
+}
+
+// To check if you've completed the challenge, uncomment these console.logs!
+
+console.log(getLength([1]));
+console.log(getLength([1, 2]));
+console.log(getLength([1, 2, 3, 4, 5]));
+console.log(getLength[]));
+
+
+//////////////////////////////////////////
+
+//Write a function that takes two inputs, a base and an exponent, and returns the expected value of base ^ exponent. For instance, if our base is 2 and our exponent is 3, then return 8 because 2^3 = 2*2*2 = 8.
+
+// add in parameters counter = 0 for base case, total = base 
+function pow(base, exponent, counter = 0, total = 1) {
+	// base case, if counter === exponent, return total
+  if (counter === exponent){
+    return total;
+  }
+  // total which has a value of 1 to start, multiply by 2 4 times.
+ 	total *= base; 
+  //counter ++ , we want counter to equal 4
+  counter++ 
+  // recursive case,  return base, exponent, counter
+  return pow(base, exponent, counter++, total);
+}
+
+console.log(pow(2, 4)); // -> 16
+console.log(pow(3, 5)); // -> 243
+console.log(pow(2, 3)); // -> 8
+
+///////////////////////////
