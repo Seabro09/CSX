@@ -92,3 +92,34 @@ console.log(pow(3, 5)); // -> 243
 console.log(pow(2, 3)); // -> 8
 
 ///////////////////////////
+
+//Write a function that takes an array of functions and a number that will be piped through all those functions. The input number passes through the first function, whose output is passed as input to the second function, whose output is passed as input to the third function, and so on. Use recursion to return the final output of the last function in the array.
+
+// // My Code
+
+// function flow(input, funcArray, i = 0, output = 0) {
+// 	if (i === funcArray.length) {
+//     return input; // we return input and NOT output here because its like if we were going to return the input to a new function, but there are no more functions.  So just return what the input would have been.
+//   }
+//   output = funcArray[i](input); // second time the function is called, the input is actually whatever the output is from the previous call
+//   console.log(output);
+//   i++;
+//   return flow(output, funcArray, i) // output now passed in 
+// }
+
+// To check if you've completed the challenge, uncomment this code!
+function multiplyBy2(num) { return num * 2; }
+function add7(num) { return num + 7; }
+function modulo4(num) { return num % 4; }
+function subtract10(num) { return num - 10; }
+function add2(num) { return num + 2; }
+const arrayOfFunctions = [multiplyBy2, add7, modulo4, subtract10, add2];
+console.log(flow(2, arrayOfFunctions)); // -> -7
+
+// CSX Code
+
+function flow(input, funcArray) {
+  if (funcArray.length === 0) return input; // return the input, not output
+	const output = funcArray[0](input);
+ return flow(output, funcArray.slice(1)); // on the first recursive call, pass in funcArray but slice off the first function
+}
