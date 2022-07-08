@@ -1,7 +1,9 @@
-let factorial = function fac(num) {
-    if (num ===1) return 1;
-    return num * fac(num-1);
-    
-let final = factorial(5);
-console.log(final);
+const num = 3;
+function multiplyBy2 (inputnumber) {
+    const result = inputNumber * 2;
+    return result;
 }
+
+const output = multiplyBy2(4);
+const newOutput = multiplyBy2(10);
+
