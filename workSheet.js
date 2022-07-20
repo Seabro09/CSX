@@ -38,3 +38,60 @@ function userCreator(name, score) {
 
 userCreator("Will", 3);
 userCreator("Mike", 5);
+
+
+/////////////////////////////////////////
+function userCreator (name, score) {
+    const newUser = Object.create(userFunctionStore);
+    newUser.name = name;
+    newUser.score = score;
+    return newUser;
+};
+
+const userFunctionStore = {
+    increment: function(){this.score++},
+    login: function(){console.log("Logged in");}
+};
+
+const user1 = userCreator("Will", 3);
+const user2 = userCreator("Tim",  5);
+user1.increment();
+
+
+/////////////////////////////////////
+
+function UserCreator(name, score) { // notice the uppercase
+    
+}
+
+UserCreator.prototype.increment = function(){
+    this.score++;
+};
+
+UserCreator.prototype.login = function() {
+    console.log("login");
+}
+
+const user1 = new UserCreator("Eva", 9)
+
+user1.increment() 
+
+
+/////////////////////////////////
+
+class UserCreator {
+    constructor (name,score) {
+        this.name = name;
+        this.score = score;
+    }
+    increment () {
+        this.score++;
+    }
+    login () {
+        console.log("login");
+    }
+}
+
+const user1 = new UserCreator("Eva", 9);
+
+user1.increment();
