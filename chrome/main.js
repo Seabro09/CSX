@@ -1,2 +1,2 @@
-const contents = document.getElementById("content");
+const content = document.getElementById("content");
 content.parentNode.removeChild(content);
