@@ -8,8 +8,8 @@
           "128": "mtn.png" },
     "content_scripts": [ // used to link our code in main.js
         {
-            "matches": ["https://www.youtube.com/*"], // tells Chrome that this code only applies when in this website (YouTube)
-            "js": ["./main.js"] // link our main.js code
+            "matches": ["https://www.youtube.com/*"], // tells Chrome that this code only applies when in this website (YouTube) 
+            "js": ["jquery.min.js", "./main.js"] // link our main.js code
         }
     ], // this field is an array in case we had multiple matches or JS files to link together   
     "browser_action": {
