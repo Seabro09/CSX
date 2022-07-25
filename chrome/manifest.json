@@ -9,7 +9,8 @@
     "content_scripts": [ // used to link our code in main.js
         {
             "matches": ["https://www.youtube.com/*"], // tells Chrome that this code only applies when in this website (YouTube) 
-            "js": ["jquery.min.js", "./main.js"] // link our main.js code
+            "js": ["jquery.min.js", "./main.js"], // link our main.js code // must add the jquery file and link to it in order to use jquery in our main.js 
+            "css": ["index.css"]
         }
     ], // this field is an array in case we had multiple matches or JS files to link together   
     "browser_action": {
@@ -18,3 +19,4 @@
     }
 }
 
+  
