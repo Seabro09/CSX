@@ -10,4 +10,6 @@ const ytdParent = ytd.parent();
 ytd.remove();
 contents.remove();
 ytdParent.prepend(img1);
-ytdParent.prepend(div)
+ytdParent.prepend(div);
+div.classList.add("animate_pulse")
+
