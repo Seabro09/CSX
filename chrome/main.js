@@ -4,6 +4,9 @@ const div = document.createElement("div"); // create constant div of type div
 const text = document.createTextNode("\"When an action grows unprofitable, gather information; when information grows unprofitable, sleep.\" - Ursula K. Le Guin"); // create constant text with our added quote as the value using the .createTextNode method
 div.appendChild(text); // append text as a child to div using the .appendChild method
 div.classList.add("beautText"); // add the class that we have stored in our index.css file using the .classList method
+div.classList.add("center");
+img1.classList.add("center");
+img1.classList.add("round");
 const ytd = $("ytd-app") // create a constant called ytd and set it equal to the tag name ytd-app.  Here we are using jquery
 const contents = $("#content"); 
 const ytdParent = ytd.parent();
@@ -12,7 +15,7 @@ contents.remove();
 ytdParent.prepend(img1);
 ytdParent.prepend(div);
 $("div").animate({ 
-            marginLeft: "100px", 
+            paddingLeft: "150px", 
         }, 5000, "linear");
 
 
