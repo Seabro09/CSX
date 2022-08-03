@@ -13,6 +13,7 @@ div1.appendChild(img1);
 div1.appendChild(img2);
 div1.appendChild(img3);
 
+div1.classList.add("rotating-t")
 $(window).load(function() { //start after HTML, images have loaded
  
     var InfiniteRotator =
