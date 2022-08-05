@@ -5,19 +5,18 @@
 }
 
 .center {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 .round {
-  border-radius: 25%;
+    border-radius: 25%;
 }
 
 img {
-  display: none;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
-
