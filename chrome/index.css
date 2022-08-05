@@ -5,7 +5,6 @@
 }
 
 .center {
-  display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
@@ -15,14 +14,10 @@
   border-radius: 25%;
 }
 
-#rotating-item-wrapper {
-    position: relative;
-    width: 980px;
-    height: 347px;
+img {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
-.rotating-item {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
+
