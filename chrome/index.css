@@ -1,3 +1,8 @@
+.color {
+    background-color: #000000;
+    border-radius: 25%;
+}
+
 .beautText {
     color: #bc392e;
     font-size: 24px;

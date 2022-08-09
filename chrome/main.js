@@ -35,6 +35,7 @@ ytd.remove();
 contents.remove();
 skeleton.remove(); // remove the unnecessary skeleton
 
+document.body.className += 'color';
 
 ytdParent.prepend(textDiv);
 
