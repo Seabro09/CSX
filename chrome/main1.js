@@ -1,4 +1,4 @@
-// This version will fetch a random image from the unsplash.api
+// This version will use an ajax call to obtain a random image from the unsplash.api
 
 let clientID = "SWLEVwRUpyzEsprgJwJVPKQ2WBb4WqY-2zklS6gsHcU";
 let endpoint = `https://api.unsplash.com/photos/random/?client_id=${clientID}`;
