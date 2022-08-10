@@ -11,11 +11,10 @@
     "content_scripts": [
         {
             "matches": ["https://www.youtube.com/*"],
-            "js": ["jquery.min.js", "./main.js"],
-            "css": ["./index.css"]
+            "js": ["jquery.min.js", "./main1.js"],
+            "css": ["./index1.css"]
         }
-    ],
-    "browser_action": {
+    ],"browser_action": {
         "default_popup": "popup.html",
         "default_title": "A popup will come here."
     }

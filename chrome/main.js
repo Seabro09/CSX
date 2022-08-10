@@ -1,3 +1,6 @@
+//This version of the extension will alternate three photos every 4 seconds
+
+
 const setBg = () => { //declaration of random color function for the text) 
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     textDiv.style.color = "#" + randomColor;
