@@ -3,7 +3,7 @@
 let clientID = "SWLEVwRUpyzEsprgJwJVPKQ2WBb4WqY-2zklS6gsHcU";
 let endpoint = `https://api.unsplash.com/photos/random/?client_id=${clientID}`;
 const img = document.createElement("img");
-$.ajax({
+$.ajax({ // initial ajax call to get the random image from unsplash
     method: `Get`,
     url: endpoint,
     success: function (result) {
@@ -58,7 +58,7 @@ setInterval(function () { // every 5 seconds, bring the text back if style is no
     setBg(); // call the random color change function
 }, 4000)
 
-img.onclick = function () {
+img.onclick = function () { //on click, image will change. 
     $.ajax({
         method: `Get`,
         url: endpoint,
