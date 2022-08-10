@@ -3,13 +3,6 @@
 let clientID = "SWLEVwRUpyzEsprgJwJVPKQ2WBb4WqY-2zklS6gsHcU";
 let endpoint = `https://api.unsplash.com/photos/random/?client_id=${clientID}`;
 const img = document.createElement("img");
-//fetch(endpoint)
-//    .then(function (response) {
-//        return response.json();
-//    })
-//    .then(function (jsonData) {
-//        img.src = jsonData.urls.regular;
-//    })
 $.ajax({
     method: `Get`,
     url: endpoint,
@@ -47,7 +40,7 @@ ytdParent.prepend(img);
 ytdParent.prepend(textDiv);
 
 $("div").animate({
-    paddingRight: "95px",
+    paddingRight: "100px",
 }, 3000, "linear");
 
 $('div').click(function () { // when an element of type div is clicked, hide the text
@@ -64,3 +57,16 @@ setInterval(function () { // every 5 seconds, bring the text back if style is no
     }
     setBg(); // call the random color change function
 }, 4000)
+
+img.onclick = function () {
+    $.ajax({
+        method: `Get`,
+        url: endpoint,
+        success: function (result) {
+            img.src = result.urls.regular;
+        },
+        error: function (err) {
+            alert("Error retrieving data");
+        }
+    });
+}
