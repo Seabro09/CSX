@@ -40,3 +40,28 @@ console.log(nth(arrayToList([10, 20, 30]), 1));
 // → 20
 
 console.log(arrayToList([1, 2, 3, 4, 5]));
+
+
+///////////////////////
+
+function arrayToList(array) {
+    let list = null;
+    for (let i = array.length - 1; i >= 0; i--) {
+        list = {
+            value: array[i],
+            rest: list
+        }; // at first, list is equal to null, but we set it equal to this object here and the second time around, the list is an object instead of null 
+    }
+    return list;
+}
+
+console.log(arrayToList([10, 20]));
+// → {value: 10, rest: {value: 20, rest: null}}
+
+function forArray(array) {
+    for (let i = 0; i < array.length; i++) {
+        console.log(array[i]);
+    }
+}
+
+forArray([10, 20]);
