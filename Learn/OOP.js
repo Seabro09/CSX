@@ -30,3 +30,30 @@ Student.prototype.grade = 4;
 
 
 console.log(Student.protoype.grade);
+
+////////////////////////////////////////////////////
+
+class Vec {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    plus(other) {
+        return new Vec(this.x + other.x, this.y + other.y)
+    }
+    timesTwo() {
+        return new Vec(this.x * 2, this.y * 2);
+    }
+    timesOther(other) {
+        return new Vec(this.x * other.x, this.y * other.y)
+    }
+    get length() {
+        return Math.sqrt(this.x * this.x + this.y * this.y);
+  }
+}
+
+console.log(new Vec(1, 2).plus(new Vec(2, 3)));
+// → Vec{x: 3, y: 5}
+
+console.log(new Vec(2,3).timesTwo());
+console.log(new Vec(4,5).timesOther(new Vec(3,4)));
