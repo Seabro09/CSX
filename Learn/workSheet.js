@@ -24,10 +24,14 @@ class Group {
             return true;
         }
     }
-    static from(...values) {
-        // figure out how static works
-        // use a for/of loop to iterate over the object and get the values out
-        // use the call method to put them into a newly created group.
+    static from(values) {
+        let group = new Group;
+        for (let value of values){
+            group.add(value);
+        }
+        return group;
+    }
+
 }
 
 const group1 = new Group(); 
