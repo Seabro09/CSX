@@ -48,3 +48,12 @@ console.log(group1.has(2));
 
 const group2 =Group.from([10,20])
 group2;
+
+const groupIterator = {
+    next() {
+
+    },
+    [symbol.iterator] () {
+        return this;
+    },
+},
