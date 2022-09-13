@@ -1,15 +1,25 @@
-// object cheat sheet
+function eitherCallback(callback1, callback2) {
+  return (element) => { // here is the ES6 arrow function syntax. It will allow us to return a generic anonymous function with the three parameters.  We initalize them first then... 
+    if (callback1(element) || callback2(element)) {
+        return true;
+    } // here we return the boolean if either callback is true
+  }
+}
 
-const obj = {}; // new object
+// important, we don't actually need to return i and array, only element. However,we can do this so that later if we need them, we have them returned. 
 
-obj["String1"] = 1; // use brackets to set a new key/value pair or property/value pair
-
-obj["String1"] = 2; // when we use the same key but set it equal to a new value, it simply changes the first String1 key's value 
-
-obj["String2"] = 2; // when we use a different key and set it equal to another value, it will create a new key/value pair within the object. 
-
-obj.string1 = 1; // if we use dot notation with a new key (notice the lower case s), we will get a new key/value pair.
-
-obj.String1 = 1; // if we use dot notation with the same key, it will simply update the value of the String1 key's value.
-
-obj;
+//Uncomment these to check your work!
+function filterArray(array, callback) {
+  const newArray = [];
+  for (let i = 0; i < array.length; i += 1) {
+    if (callback(array[i]) === true) {
+        newArray.push(array[i]); // if true, push the element to newArray
+    }
+  }
+  return newArray;
+}
+const arrOfNums = [10, 35, 105, 9];
+const integerSquareRoot = n => Math.sqrt(n) % 1 === 0;
+const over100 = n => n > 100;
+const intSqRtOrOver100 = eitherCallback(integerSquareRoot, over100);
+console.log(filterArray(arrOfNums, intSqRtOrOver100)); // should log: [105, 9]
